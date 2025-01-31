@@ -35,6 +35,16 @@ const getAllUrls = async () => {
     return urls;
 };
 
+// Update the short URL given the original URL
+const updateShortUrl = async (originalUrl, shortUrl) => {
+    const url = await urlModel.findOne({ originalUrl });
+    if (!url) {
+        throw new Error('URL not found');
+    }
+
+    url.shortUrl = shortUrl;
+};
+
 const deleteUrl = async (shortUrl) => {
     const url = await urlModel.findOne({ shortUrl });
     if (!url) {
