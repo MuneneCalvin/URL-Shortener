@@ -5,6 +5,7 @@ const createShortUrl = async (req, res) => {
     try {
         const { originalUrl } = req.body;
         const shortUrl = await urlService.createShortUrl(originalUrl);
+        res.redirect(shortUrl);
     
         res.status(201).json({ shortUrl });
     } catch (error) {
