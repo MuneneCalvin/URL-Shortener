@@ -16,3 +16,13 @@ const createShortUrl = async (originalUrl) => {
 
     await url.save();
 };
+
+const getOriginalUrl = async (shortUrl) => {
+    const url = await urlModel.findOne({ shortUrl });
+    if (url) {
+        url.clicks++;
+        await url.save();
+    }
+
+    return url;
+};
