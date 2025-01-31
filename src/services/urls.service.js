@@ -35,7 +35,6 @@ const getAllUrls = async () => {
     return urls;
 };
 
-// Update the short URL given the original URL
 const updateShortUrl = async (originalUrl, shortUrl) => {
     const url = await urlModel.findOne({ originalUrl });
     if (!url) {
@@ -59,5 +58,7 @@ const deleteUrl = async (shortUrl) => {
 module.exports = {
     createShortUrl,
     getOriginalUrl,
-    getAllUrls
+    getAllUrls,
+    updateShortUrl,
+    deleteUrl
 };
