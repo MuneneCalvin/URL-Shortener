@@ -35,3 +35,10 @@ const getAllUrls = async () => {
 
     return urls;
 };
+
+
+module.exports = {
+    createShortUrl,
+    getOriginalUrl,
+    getAllUrls
+};
