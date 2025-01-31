@@ -16,7 +16,7 @@ const { jwtStrategy } = require('./config/passport');
 
 
 const app = express();
-let server;
+let expressServer;
 
 // if (config.env !== 'test') {
 //     app.use(morgan.successHandler);
