@@ -26,3 +26,13 @@ const getOriginalUrl = async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error', error: error.message });
     }
 };
+
+const getAllUrls = async (req, res) => {
+    try {
+        const urls = await urlService.getAllUrls();
+
+        res.json(urls);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error', error: error.message });
+    }
+};
