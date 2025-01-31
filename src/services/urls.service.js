@@ -29,3 +29,9 @@ const getOriginalUrl = async (shortUrl) => {
     return url;
 };
 
+const getAllUrls = async () => {
+    const urls = await urlModel.find()
+        .sort({ createdAt: -1 })
+
+    return urls;
+};
