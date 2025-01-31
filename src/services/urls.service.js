@@ -35,6 +35,16 @@ const getAllUrls = async () => {
     return urls;
 };
 
+const deleteUrl = async (shortUrl) => {
+    const url = await urlModel.findOne({ shortUrl });
+    if (!url) {
+        throw new Error('URL not found');
+    }
+
+    url.is_deleted = true;
+    await url.save();
+};
+
 
 module.exports = {
     createShortUrl,
