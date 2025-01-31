@@ -7,7 +7,7 @@ const createShortUrl = async (req, res) => {
         const shortUrl = await urlService.createShortUrl(originalUrl);
         res.redirect(shortUrl);
     
-        res.status(201).json({ shortUrl });
+        res.status(201).json({ message: 'Short URL created successfully', shortUrl });
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error', error: error.message  });
     }
