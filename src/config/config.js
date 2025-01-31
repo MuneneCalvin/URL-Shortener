@@ -1,7 +1,6 @@
 const dotenv = require('dotenv');
 const path = require('path');
 const Joi= require('joi');
-const { connectOptions } = require('mongoose');
 
 dotenv.config({ path: path.join(__dirname, '../../.env') });
 
