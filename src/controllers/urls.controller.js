@@ -32,7 +32,7 @@ const getAllUrls = async (req, res) => {
     try {
         const urls = await urlService.getAllUrls();
 
-        res.json(urls);
+        res.json({ message: 'All URLs retrieved successfully', urls });
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error', error: error.message });
     }
