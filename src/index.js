@@ -16,3 +16,16 @@ import routes from './routes';
 
 const app = express();
 let server;
+
+if (config.env !== 'test') {
+    app.use(morgan.successHandler);
+    app.use(morgan.errorHandler);
+}
+
+// connect to MongoDB
+mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
+    logger.info('Connected to MongoDB');
+    server.listen(config.port, () => {
+        logger.info(`Listening to port ${config.port}`);
+    });
+});
