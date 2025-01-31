@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 const config = require('./config/config');
 const logger = require('./config/logger');
 const morgan = require('./config/morgan');
-// import { jwtStrategy } from './config/passport';
+const { jwtStrategy } = require('./config/passport');
 // import ApiError from './utils/ApiError';
 // import { errorConverter, errorHandler } from './middlewares/error';
 // import routes from './routes';
