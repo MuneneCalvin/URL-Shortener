@@ -19,10 +19,13 @@ const createShortUrl = async (originalUrl) => {
 
 const getOriginalUrl = async (shortUrl) => {
     const url = await urlModel.findOne({ shortUrl });
-    if (url) {
-        url.clicks++;
-        await url.save();
+    if (!url) {
+        throw new Error('URL not found');
     }
+
+    url.clicks++;
+    await url.save();
 
     return url;
 };
+
