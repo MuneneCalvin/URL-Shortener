@@ -73,7 +73,7 @@ app.get('/', (req , res) => {
     res.send("Hello, welcome to URL Shortener............🚀👋");
 });
 
-app.use('/v1', routes);
+// app.use('/v1', routes);
 
 // send back a 404 error for any unknown api request
 app.use((req, res, next) => {
@@ -81,10 +81,10 @@ app.use((req, res, next) => {
 });
 
 // convert error to ApiError, if needed
-app.use(errorConverter);
+// app.use(errorConverter);
 
 // handle error
-app.use(errorHandler);
+// app.use(errorHandler);
 
 
 module.exports = app;
