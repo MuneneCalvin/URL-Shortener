@@ -22,10 +22,12 @@
   "description": "",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.3",
     "connect-timeout": "^1.9.0",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.7",
+    "ejs-locals": "^1.0.2",
     "express": "^4.21.2",
     "helmet": "^8.0.0",
     "joi": "^17.13.3",
@@ -37,6 +39,9 @@
     "nodemon": "^3.1.9",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
+    "path": "^0.12.7",
+    "random": "^5.1.1",
+    "valid-url": "^1.0.9",
     "validator": "^13.12.0",
     "winston": "^3.17.0"
   }
