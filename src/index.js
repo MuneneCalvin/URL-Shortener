@@ -68,14 +68,14 @@ passport.use('jwt', jwtStrategy);
 
 
 // Api routes
-app.get('/', (req: Request , res: Response) => {
-    res.send("Hello, welcome to the Backend Template...... 🚀👋");
+app.get('/', (req , res) => {
+    res.send("Hello, welcome to URL Shortener............🚀👋");
 });
 
 app.use('/v1', routes);
 
 // send back a 404 error for any unknown api request
-app.use((req: Request, res: Response, next: NextFunction) => {
+app.use((req, res, next) => {
     return next(new ApiError(404, 'Not Found'));
 });
 
