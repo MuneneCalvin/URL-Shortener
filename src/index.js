@@ -24,12 +24,14 @@ let server;
 // }
 
 // connect to MongoDB
-mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
+mongoose.connect(config.mongoose.url, config.mongoose.options)
+    .then(() => {
     logger.info('Connected to MongoDB');
-    server.listen(config.port, () => {
-        logger.info(`Listening to port ${config.port}`);
+    expressServer = app.listen(config.port, () => {
+        logger.info(`Server started on port ${config.port}`);
     });
 });
+
 
 // set security HTTP headers
 app.use(helmet());
