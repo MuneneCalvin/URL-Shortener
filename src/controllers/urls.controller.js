@@ -17,6 +17,21 @@ const createShortUrl = async (req, res) => {
     }
 };
 
+const getOriginalUrl = async (req, res) => {
+    try {
+        const { shortUrl } = req.params;
+        const originalUrl = await urlService.getOriginalUrl(shortUrl);
+
+        if (originalUrl) {
+            res.redirect(originalUrl);
+        } else {
+            res.status(404).json({ error: 'Short URL not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error', error: error.message });
+    }
+};
+
 const  redirectToOriginalUrl = async (req, res) => {
     try {
         const { shortUrl } = req.params;
@@ -32,20 +47,6 @@ const  redirectToOriginalUrl = async (req, res) => {
     }
 };
 
-const getOriginalUrl = async (req, res) => {
-    try {
-        const { shortUrl } = req.params;
-        const originalUrl = await urlService.getOriginalUrl(shortUrl);
-
-        if (originalUrl) {
-            res.redirect(originalUrl);
-        } else {
-            res.status(404).json({ error: 'Short URL not found' });
-        }
-    } catch (error) {
-        res.status(500).json({ error: 'Internal Server Error', error: error.message });
-    }
-};
 
 const getAllUrls = async (req, res) => {
     try {
@@ -84,6 +85,7 @@ const deleteUrl = async (req, res) => {
 module.exports = {
     createShortUrl,
     getOriginalUrl,
+    redirectToOriginalUrl,
     getAllUrls,
     updateShortUrl,
     deleteUrl,
