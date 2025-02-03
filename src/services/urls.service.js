@@ -14,6 +14,8 @@ const createShortUrl = async (originalUrl) => {
     });
 
     await url.save();
+
+    return url;
 };
 
 const getOriginalUrl = async (shortUrl) => {
