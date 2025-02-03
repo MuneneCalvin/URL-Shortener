@@ -37,6 +37,17 @@ const getAllUrls = async (req, res) => {
     }
 };
 
+const updateShortUrl = async (req, res) => {
+    try {
+        const { originalUrl, shortUrl } = req.body;
+        await urlService.updateShortUrl(originalUrl, shortUrl);
+
+        res.json({ message: 'Short URL updated successfully' });
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error', error: error.message });
+    }
+};
+
 
 module.exports = {
     createShortUrl,
