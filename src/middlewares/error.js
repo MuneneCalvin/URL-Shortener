@@ -17,10 +17,9 @@ export const errorConverter = ()  => {
 
 // Error Handler Middleware
 export const errorHandler = () => {
-  // Prevent duplicate responses if headers are already sent
   if (res.headersSent) {
     console.log('Response has headers set. Exiting operation.');
-    return next(err); // Delegate to default error handler
+    return next(err); 
   }
 
   let { statusCode = 500, message = 'An unexpected error occurred' } = err;
@@ -35,16 +34,15 @@ export const errorHandler = () => {
   const response = {
     code: statusCode,
     message,
-    ...(config.env === 'development' && { stack: err.stack }), // Include stack trace in development
+    ...(config.env === 'development' && { stack: err.stack }),
   };
 
-  // Log the error (more detailed in development)
   logger.error({
     message: err.message,
     stack: config.env === 'development' ? err.stack : undefined,
     statusCode,
   });
 
-  // Send error response
+
   res.status(statusCode).json(response);
 };
