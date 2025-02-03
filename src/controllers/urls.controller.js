@@ -49,6 +49,18 @@ const updateShortUrl = async (req, res) => {
 };
 
 
+const deleteUrl = async (req, res) => {
+    try {
+        const { shortUrl } = req.params;
+        await urlService.deleteUrl(shortUrl);
+
+        res.json({ message: 'Short URL deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error', error: error.message });
+    }
+};
+
+
 module.exports = {
     createShortUrl,
     getOriginalUrl,
