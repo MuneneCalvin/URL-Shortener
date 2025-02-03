@@ -1,11 +1,8 @@
 const shortid = require('shortid');
 const urlModel = require('../models/urls.model');
 
-const createShortUrl = async (originalUrl) => {
+const createShortUrl = async (originalUrl, baseUrl) => {
     let url = await urlModel.findOne({ originalUrl });
-    if (url) {
-        return url;
-    }
 
     const shortUrl = shortid.generate();
     url = new urlModel({
@@ -15,7 +12,10 @@ const createShortUrl = async (originalUrl) => {
 
     await url.save();
 
-    return url;
+    const urlObj = url.toObject();
+    urlObj.fullShortUrl = `${baseUrl}/${shortUrl}`;
+
+    return urlObj;
 };
 
 const getOriginalUrl = async (shortUrl) => {
