@@ -12,7 +12,7 @@ const morgan = require('./config/morgan');
 const { jwtStrategy } = require('./config/passport');
 // import ApiError from './utils/ApiError';
 // import { errorConverter, errorHandler } from './middlewares/error';
-// import routes from './routes';
+import routes from './routes';
 
 
 const app = express();
