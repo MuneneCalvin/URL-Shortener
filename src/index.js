@@ -12,7 +12,7 @@ const morgan = require('./config/morgan');
 const { jwtStrategy } = require('./config/passport');
 // import ApiError from './utils/ApiError';
 // import { errorConverter, errorHandler } from './middlewares/error';
-import routes from './routes';
+const routes = require('./routes');
 
 
 const app = express();
@@ -75,7 +75,7 @@ app.get('/', (req , res) => {
     res.send("Hello, welcome to URL Shortener............🚀👋");
 });
 
-// app.use('/v1', routes);
+app.use('/v1', routes);
 
 // send back a 404 error for any unknown api request
 app.use((req, res, next) => {
