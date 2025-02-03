@@ -11,7 +11,7 @@ const logger = require('./config/logger');
 const morgan = require('./config/morgan');
 const { jwtStrategy } = require('./config/passport');
 const ApiError = require('./utils/ApiError');
-import { errorConverter, errorHandler } from './middlewares/error';
+const { errorConverter, errorHandler } = require('./middlewares/error');
 const routes = require('./routes');
 
 

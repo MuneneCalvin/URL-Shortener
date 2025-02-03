@@ -1,5 +1,5 @@
-const { urlModel } = require('../models/urls.model');
 const shortid = require('shortid');
+const urlModel = require('../models/urls.model');
 
 const createShortUrl = async (originalUrl) => {
     let url = await urlModel.findOne({ originalUrl });
