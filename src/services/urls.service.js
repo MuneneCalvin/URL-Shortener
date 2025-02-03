@@ -12,10 +12,9 @@ const createShortUrl = async (originalUrl, baseUrl) => {
 
     await url.save();
 
-    const urlObj = url.toObject();
-    urlObj.fullShortUrl = `${baseUrl}/${shortUrl}`;
-
-    return urlObj;
+    return {
+        shortUrl: `${baseUrl}/${shortUrl}`
+    };
 };
 
 const getOriginalUrl = async (shortUrl) => {

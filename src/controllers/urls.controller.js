@@ -4,11 +4,16 @@ const urlService = require('../services/urls.service');
 const createShortUrl = async (req, res) => {
     try {
         const { originalUrl } = req.body;
-        const shortUrl = await urlService.createShortUrl(originalUrl);
+        const baseUrl = `${req.protocol}://${req.get('host')}`;
+        const shortUrl = await urlService.createShortUrl(originalUrl, baseUrl);
 
-        res.json({ message: 'Short URL created successfully', shortUrl });
+        res.json({ 
+            message: 'Short URL created successfully', 
+            shortUrl: shortUrl.fullShortUrl,
+            originalUrl: shortUrl.originalUrl
+        });
     } catch (error) {
-        res.status(500).json({ error: 'Internal Server Error', error: error.message  });
+        res.status(500).json({ error: 'Internal Server Error', details: error.message });
     }
 };
 
