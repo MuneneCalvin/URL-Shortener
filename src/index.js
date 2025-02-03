@@ -10,7 +10,7 @@ const config = require('./config/config');
 const logger = require('./config/logger');
 const morgan = require('./config/morgan');
 const { jwtStrategy } = require('./config/passport');
-// import ApiError from './utils/ApiError';
+const ApiError = require('./utils/ApiError');
 // import { errorConverter, errorHandler } from './middlewares/error';
 const routes = require('./routes');
 
