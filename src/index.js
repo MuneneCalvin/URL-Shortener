@@ -11,7 +11,7 @@ const logger = require('./config/logger');
 const morgan = require('./config/morgan');
 const { jwtStrategy } = require('./config/passport');
 const ApiError = require('./utils/ApiError');
-// import { errorConverter, errorHandler } from './middlewares/error';
+import { errorConverter, errorHandler } from './middlewares/error';
 const routes = require('./routes');
 
 
@@ -83,10 +83,10 @@ app.use((req, res, next) => {
 });
 
 // convert error to ApiError, if needed
-// app.use(errorConverter);
+app.use(errorConverter);
 
 // handle error
-// app.use(errorHandler);
+app.use(errorHandler);
 
 
 module.exports = app;
