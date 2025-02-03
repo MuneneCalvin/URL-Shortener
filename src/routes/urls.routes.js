@@ -5,7 +5,7 @@ const urlsController = require('../controllers/urls.controller');
 const router = express.Router();
 
 router.post('/shorten', urlsController.createShortUrl);
-router.get('/:shortUrl', urlsController.getOriginalUrl);
+router.get('/:shortUrl', urlsController.redirectToOriginalUrl);
 router.get('/', urlsController.getAllUrls);
 router.put('/', urlsController.updateShortUrl);
 router.delete('/:shortUrl', urlsController.deleteUrl);
