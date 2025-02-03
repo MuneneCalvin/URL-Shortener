@@ -64,5 +64,7 @@ const deleteUrl = async (req, res) => {
 module.exports = {
     createShortUrl,
     getOriginalUrl,
-    getAllUrls
+    getAllUrls,
+    updateShortUrl,
+    deleteUrl,
 };
