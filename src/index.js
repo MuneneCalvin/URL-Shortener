@@ -58,6 +58,7 @@ app.use(express.json({ limit: '50mb' }));
 
 // parse urlencoded request body
 app.use(express.urlencoded({ limit: '50mb', extended: false }));
+app.use(bodyParser.json());
 
 app.disable('x-powered-by');
 app.use((req, res, next) => {
