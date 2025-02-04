@@ -18,10 +18,10 @@ const routes = require('./routes');
 const app = express();
 let expressServer;
 
-// if (config.env !== 'test') {
-//     app.use(morgan.successHandler);
-//     app.use(morgan.errorHandler);
-// }
+if (config.env !== 'test') {
+    app.use(morgan.successHandler);
+    app.use(morgan.errorHandler);
+}
 
 // connect to MongoDB
 mongoose.connect(config.mongoose.url, config.mongoose.options)
