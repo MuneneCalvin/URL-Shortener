@@ -6,6 +6,10 @@ const passport = require('passport');
 const timeout = require('connect-timeout');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const engine = require('ejs-locals');
+const path = require('path');
+const validUrl = require('valid-url');
 const config = require('./config/config');
 const logger = require('./config/logger');
 const morgan = require('./config/morgan');
@@ -40,6 +44,14 @@ app.use(helmet());
 app.use(cors());
 app.options('*', cors());
 app.use(timeout('180s'));
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.engine('ejs', engine);
+app.set('view engine', 'ejs');
+
+// set public folder for assets
+app.use(express.static(path.join(__dirname, 'public')));
 
 // parse json request body
 app.use(express.json({ limit: '50mb' }));
