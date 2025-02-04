@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const engine = require('ejs-locals');
 const path = require('path');
-const validUrl = require('valid-url');
+// const validUrl = require('valid-url');
 const config = require('./config/config');
 const logger = require('./config/logger');
 const morgan = require('./config/morgan');
@@ -61,6 +61,7 @@ app.use(express.urlencoded({ limit: '50mb', extended: false }));
 app.use(bodyParser.json());
 
 app.disable('x-powered-by');
+
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept,Authorization');
